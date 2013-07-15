@@ -48,6 +48,31 @@ class TestRubeque < MiniTest::Unit::TestCase
   end
 
   def test_missing_method_p2
-    assert_equal [1, 3, 7, 4, 9, 8].___(&:even?), 4
+    assert_equal [1, 3, 7, 4, 9, 8].find(&:even?), 4
+  end
+
+  def test_temperature_bot
+    assert_equal temperature_bot(18), "I like this temperature"
+    assert_equal temperature_bot(21), "I like this temperature"
+    assert_equal temperature_bot(22), "This is uncomfortable for me"
+    assert_equal temperature_bot(-3), "This is uncomfortable for me"
+  end
+
+  def test_injected_and_rejected
+    assert_equal sum_over_50([29, 52, 77, 102]), 231
+    assert_equal sum_over_50([5, 11, 50]), 0
+    assert_equal sum_over_50([4, 8, 15, 16, 23, 42]), 0
+    assert_equal sum_over_50([300, 22, 1, 55, 42]), 355
+  end
+
+  def test_dave
+    @name = "Dave"
+    str = "My mind is going #@name"
+
+    assert_equal (str == "My mind is going Dave"), the_truth
+  end
+
+  def test_home_range
+    assert_equal (1..100).to_a[11..94].reduce(:+), 4494
   end
 end

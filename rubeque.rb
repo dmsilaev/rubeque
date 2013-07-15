@@ -22,7 +22,20 @@ module Rubeque
   end
 
   def twenty_one?(*cards)
-    res = cards.inject(0) { |sum, card| sum + card }
-    res == 21
+    cards.inject(0) { |sum, card| sum + card } == 21
   end  
+
+  def temperature_bot(temp)
+    # temperature bot is American but takes Celsius temperatures
+    case temp
+    when (18 .. 21)
+      "I like this temperature"
+    else
+      "This is uncomfortable for me"
+    end
+  end
+
+  def sum_over_50(mass)
+    mass.inject(0) { |sum, num| (num > 50) ? sum + num : sum }
+  end
 end

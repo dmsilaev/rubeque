@@ -1,5 +1,5 @@
 module Rubeque
-	def the_truth
-		true
-	end
+  def the_truth
+    true
+  end
 end

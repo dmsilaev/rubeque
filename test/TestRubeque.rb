@@ -4,6 +4,7 @@ require "./rubeque"
 class TestRubeque < MiniTest::Unit::TestCase
   include Rubeque
 
+  #elementary
   def test_the_truth
     assert_equal true, the_truth
   end
@@ -119,6 +120,7 @@ class TestRubeque < MiniTest::Unit::TestCase
     assert_equal "E"[2],           nil
   end
 
+  #easy
   def test_reverse_each_word
     assert_equal "olleH ,ereht dna woh era ?uoy", reverse_each_word("Hello there, and how are you?")
   end
@@ -157,5 +159,29 @@ class TestRubeque < MiniTest::Unit::TestCase
 
   def test_constant_rule
     assert_equal SimpleConst.new.foo, CONST
+  end
+
+  #medium
+  def test_do_pigs_fly
+    assert_equal do_pigs_fly?, false
+  end
+
+  def test_math_is_easy?
+    assert_equal math_is_easy?, true
+  end
+
+  def test_array_to_hash
+    ary = [1,2,3,4,5]
+    #Keys should be double
+    result = ary.to_hash_values { |a| a*2 }
+    assert_equal(result[2], 1)
+    assert_equal(result[6], 3)
+    assert_equal(result[10], 5)
+        
+    #Keys should be string of value
+    result = ary.to_hash_values { |a| a.to_s }
+    assert_equal(result["1"], 1)
+    assert_equal(result["3"], 3)
+    assert_equal(result["5"], 5)
   end
 end

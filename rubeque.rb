@@ -1,6 +1,7 @@
 module Rubeque
   CONST = rand
 
+  #elementary
   def the_truth
     true
   end
@@ -41,7 +42,7 @@ module Rubeque
     mass.inject(0) { |sum, num| (num > 50) ? sum + num : sum }
   end
 
-  #medium tests
+  #easy
   def reverse_each_word(sentence)
     sentence.split(' ').map { |e| e.reverse }.join(' ')
   end
@@ -79,6 +80,26 @@ module Rubeque
   class Bar < Foo
     def name
       "bar"
+    end
+  end
+
+  #medium
+  def do_pigs_fly?
+    return true
+    ensure
+      return false
+  end
+
+  def math_is_easy?
+    (129.95 * 100).round == 12995
+  end
+end
+
+class Array
+  def to_hash_values(&block)
+    res = self.inject({}) do |hash, el| 
+      hash[block.call(el)] = el 
+      hash
     end
   end
 end

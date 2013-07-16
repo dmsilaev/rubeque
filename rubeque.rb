@@ -1,4 +1,6 @@
 module Rubeque
+  CONST = rand
+
   def the_truth
     true
   end
@@ -39,7 +41,44 @@ module Rubeque
     mass.inject(0) { |sum, num| (num > 50) ? sum + num : sum }
   end
 
-  def matrix_product(left, right)
+  #medium tests
+  def reverse_each_word(sentence)
+    sentence.split(' ').map { |e| e.reverse }.join(' ')
+  end
+
+  def fibo_finder(n)
+    return 0 if n == 0
+
+    n < 3 ? 1 : fibo_finder(n - 1) + fibo_finder(n - 2)
+  end
+
+  def key_for_min_value(hash)
+    return nil if hash.empty?
+    min_arr = hash.sort_by { |k,v| v }.first 
+    min_arr.first
+  end
+
+  class SimpleConst
+    CONST = rand(100)
+
+    def foo
+      return Rubeque.const_get(:CONST)
+    end
+  end
+
+  class Foo
+    def name
+      "foo"
+    end
     
+    def say_name
+      "#{name}"
+    end
+  end
+
+  class Bar < Foo
+    def name
+      "bar"
+    end
   end
 end

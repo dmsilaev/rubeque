@@ -38,4 +38,8 @@ module Rubeque
   def sum_over_50(mass)
     mass.inject(0) { |sum, num| (num > 50) ? sum + num : sum }
   end
+
+  def matrix_product(left, right)
+    
+  end
 end

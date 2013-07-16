@@ -65,7 +65,7 @@ class TestRubeque < MiniTest::Unit::TestCase
     assert_equal sum_over_50([300, 22, 1, 55, 42]), 355
   end
 
-  def test_dave
+  def test_no_way_works
     @name = "Dave"
     str = "My mind is going #@name"
 
@@ -74,5 +74,48 @@ class TestRubeque < MiniTest::Unit::TestCase
 
   def test_home_range
     assert_equal (1..100).to_a[11..94].reduce(:+), 4494
+  end
+
+  def test_array_item_removal
+    assert_equal ([:r, :u, :b, :e, :q, :u, :e].delete_if { |i| i != :b && i != :q }), [:b, :q]
+  end
+
+  def test_versus_and
+    roses = "blue" && "red"
+    violets = "blue" and "red"
+
+    assert_equal roses, "red"
+    assert_equal violets, "blue"
+  end
+
+  def test_subtracting_sugar
+    assert_equal 2.+(2), 2 + 2
+    assert_equal 40.+(2), 42
+  end
+
+  def test_no_way_works_v2
+    str = "Hello" "World"
+
+    assert_equal str, "HelloWorld"
+  end
+
+  def test_or_equal
+    b = 8
+    c = false
+
+    a ||= "rubeque"
+    b ||= "rubeque"
+    c ||= "rubeque"
+
+    assert_equal a, "rubeque"
+    assert_equal b, 8
+    assert_equal c, "rubeque"
+  end
+
+  def test_brackets_and_searches
+    assert_equal "hello world"[1], "e"
+    assert_equal "what"[8],        nil
+    assert_equal "rubeque"[-1],     "e"
+    assert_equal "E"[2],           nil
   end
 end
